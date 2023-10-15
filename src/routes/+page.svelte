@@ -1,6 +1,11 @@
 <div class="main-pomo">
     <span class="timer-text">{minutes}:{secondString}</span>
-    <button on:click={startTimer}>Start Timer</button>
+    {#if !timerRunning}
+        <button on:click={startTimer}>Start Timer</button>
+    {:else}
+        <button class="dimmed-button" on:click={() => endTimer(true)}>Stop Timer</button>
+    {/if}
+    
     <p class="cycle-count">Cycle #{focusCycleNum}</p>
 </div>
 <p>Mode: {pomodoroTimerMode}</p>
@@ -37,9 +42,15 @@
         if ($timer <= 0 && timerRunning) endTimer();
     }, 1000);
 
-    const endTimer = () => {
+    const endTimer = (forced = false) => {
+        if (forced) {
+            timerRunning = false;
+            selectedModeMinutes = modeMinutes[pomodoroTimerMode];
+            timer = tweened(totalSeconds);
+            return;
+        }
+        
         if ($timer > 0) return;
-
         timerRunning = false;
         focusCycleNum++;
 
@@ -96,5 +107,9 @@
     button:hover {
         background-color: #4e6ddb;
         cursor: pointer;
+    }
+
+    .dimmed-button {
+        background-color: #252529;
     }
 </style>
