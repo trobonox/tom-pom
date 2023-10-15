@@ -1,0 +1,50 @@
+@import url('https://fonts.cdnfonts.com/css/switzer');
+
+/* CSS reset */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* remove default spacing */
+/* force styling of type through styling, rather than elements */
+* {
+    margin: 0;
+    padding: 0;
+
+    background-color: #08080a;
+    color: #f6f6f6;
+    font-family: 'Switzer', sans-serif;
+}
+
+/* dark mode user-agent-styles */
+html {
+    color-scheme: dark light;
+}
+
+/* min body height */
+body {
+    min-height: 100vh;
+}
+
+/* responsive images/videos */
+img,
+picture,
+svg,
+video {
+    display: block;
+    max-width: 100%;
+}
+
+/* button reset */
+button {
+    background-color: transparent;
+    border-width: 0;
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    padding: 0;
+}
